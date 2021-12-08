@@ -1,0 +1,108 @@
+.bg-main{
+  background-image: url("/imagenes/mp-gallery-1600-2021.jpg");
+}
+.bg-gradient {
+  --bs-bg-opacity: 0.5;
+  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+}
+.bg-gradiente {
+  --bs-bg-opacity: 0.9;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+#introText{
+  background-color: white;
+  height: 150px;
+  color: grey;
+}
+#registroText{
+  resize: none;
+  color: grey;
+}
+/* bootstrap */
+.w-10{width:10%!important}
+.w-20{width:20%!important}
+.w-30{width:30%!important}
+.w-40{width:40%!important}
+.w-60{width:60%!important}
+.w-70{width:70%!important}
+.w-80{width:80%!important}
+.w-90{width:90%!important}
+
+.end-60{right:30.5%!important}
+/* bootstrap */
+#btn1, #btn2, #btn3{
+  background-color: rgb(212, 36, 36);
+  border: rgb(70, 2, 2);
+  border-radius: 5px;
+}
+
+#btnRegistroUser{
+  border: rgb(70, 2, 2);
+  border-radius: 5px;
+  height: 50px;
+}
+#btnRegistroArtist{
+  border: rgb(70, 2, 2);
+  border-radius: 5px;
+  height: 50px;
+}
+#btnSesion{
+  border: rgb(70, 2, 2);
+  border-radius: 5px;
+  height: 50px;
+}
+
+#tituloBox{
+  font-family: 'Berkshire Swash';
+  color: white;
+  font-size: 60px;
+}
+#tituloRegistroBox{
+  font-family: 'Berkshire Swash';
+  color: black;
+  font-size: 40px;
+}
+
+.wgFont{
+  font-family: 'Berkshire Swash';
+}
+
+.colored-toast.swal2-icon-success {
+    background-color: #a5dc86 !important;
+  }
+  
+  .colored-toast.swal2-icon-error {
+    background-color: #f27474 !important;
+  }
+  
+  .colored-toast.swal2-icon-warning {
+    background-color: #f8bb86 !important;
+  }
+  
+  .colored-toast.swal2-icon-info {
+    background-color: #3fc3ee !important;
+  }
+  
+  .colored-toast.swal2-icon-question {
+    background-color: #87adbd !important;
+  }
+  
+  .colored-toast .swal2-title {
+    color: white;
+  }
+  
+  .colored-toast .swal2-close {
+    color: white;
+  }
+  
+  .colored-toast .swal2-html-container {
+    color: white;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type=number] { -moz-appearance:textfield; }
+  

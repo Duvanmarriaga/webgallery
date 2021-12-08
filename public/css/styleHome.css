@@ -1,0 +1,143 @@
+/*Fade panels*/
+.page {
+  -moz-animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+  -ms-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -moz-animation-duration: .2s;
+  -webkit-animation-duration: .2s;
+  -ms-animation-duration: .2s;
+  animation-duration: .2s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;  
+}
+
+.page.fadeOut {
+  -moz-animation-name: fadeOut;
+  -webkit-animation-name: fadeOut;
+  -ms-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+@-moz-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@-webkit-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@-ms-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+
+@-moz-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+@-webkit-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+@-ms-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; }} 
+@-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 
+/*Fade panels*/
+#containerScrollMisCompras{
+  height: 340px;
+}
+#logoWebGallery{
+  width: 80px;
+}
+#imgSetting{
+  width: 20px;
+}
+#imgCarrito{
+  width: 20px;
+}
+#indicadorDeCarrito{
+  font-family: sans-serif;
+}
+.contenedorHome{
+  background-color: rgb(235, 235, 235);
+  margin: .5%;
+  border-radius: 4px;
+}
+.contenedorPerfil{
+  background-color: rgb(235, 235, 235);
+  margin: .5%;
+  border-radius: 4px;
+}
+.contenedorObras{
+  text-align: center;
+  border-radius: 5px;
+  background-color: white;
+  height: auto;
+}
+#scrollMostrarObras{
+  height: 500px;
+  max-height: 500px;
+  overflow: auto;
+}
+#areaDescripcion{
+  height: 100px;
+}
+
+/* bootstrap */
+.w-10{width:10%!important}
+.w-20{width:20%!important}
+.w-30{width:30%!important}
+.w-40{width:40%!important}
+.w-60{width:60%!important}
+.w-70{width:70%!important}
+.w-80{width:80%!important}
+.w-90{width:90%!important}
+.btn{
+  font-family: 'Berkshire Swash';
+}
+.tituloVentana{
+  font-family: 'Berkshire Swash';
+}
+.contenedorDeRecientes{
+  height: 300px;
+}
+.contenedorDeMejores{
+  max-height: 200px;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] { -moz-appearance:textfield; }
+
+.bg-gradient {
+  --bs-bg-opacity: 0.5;
+  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+}
+.bg-gradiente {
+  --bs-bg-opacity: 0.9;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+.nav-link{
+  color: #000000;
+}
+.nav-link.active{color:#000000;background-color:#fff;border-color:#dee2e6 #dee2e6 #fff}
+.nav-item.show .nav-link,.nav-tabs .nav-link.active{
+  color:#495057;
+  background-color:#fff;
+  border-color:#dee2e6 #dee2e6 #fff}
+.nav-tabs .dropdown-menu{margin-top:-1px;
+    border-top-left-radius:0;
+    border-top-right-radius:0}
+.nav-pills .nav-link{
+  background:0 0;
+  border:0;
+  border-radius:.25rem}
+.nav-pills .nav-link.active,.nav-pills .show>.nav-link{
+  color:#fff;
+  background-color:#b1b1b1;
+  
+}
+.nav-fill .nav-item,.nav-fill>.nav-link{
+  flex:1 1 auto;
+  text-align:center}
+.nav-justified .nav-item,.nav-justified>.nav-link{
+  flex-basis:0;flex-grow:1;text-align:center}
+.nav-fill .nav-item .nav-link,.nav-justified .nav-item .nav-link{
+  width:100%}
+/*Inicio slideshow*/
+
+/*Fin slideshow*/

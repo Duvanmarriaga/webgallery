@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if(sessionStorage.getItem("UserActive") == null){location.replace('index.html')}</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link href='https://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet'>
+    <link href="./css/styleVendedor.css" class="rel" rel="stylesheet">
+    <link rel="icon" href="imagenes/WebGallery.png" type="image/x-icon">
+</head>
+<body>
+    
+  <div id="containerUser" class="container-fluid">
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-light bg-light">
+          <div class="container-fluid">
+          <a class="navbar-brand" href="user.html"><img src="./imagenes/WebGalleryFull.png" alt="Logo WebGallery" id="logoWebGallery"></a>
+          <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse m" id="collapsibleNavId">
+            <ul class="nav nav-pills me-auto" id="pills-tab" role="tablist">
+              <li class="nav-item mt-0 mb-0 m-1" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+              </li>
+              <li class="nav-item mt-0 mb-0 m-1" role="presentation">
+                <button class="nav-link" id="pills-comprar-tab" data-bs-toggle="pill" data-bs-target="#menu1" type="button" role="tab" aria-controls="pills-comprar" aria-selected="false">Vender</button>
+              </li>
+              <li class="nav-item mt-0 mb-0 m-1" role="presentation">
+                <button class="nav-link" id="pills-misCompras-tab" data-bs-toggle="pill" data-bs-target="#menu2" type="button" role="tab" aria-controls="pills-compras" aria-selected="false">Mis ventas</button>
+              </li>
+              <li class="nav-item mt-0 mb-0 m-1" role="presentation">
+                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#menu3" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contacto</button>
+              </li>
+              <li>
+                <form class="d-flex my-2 my-lg-0">
+                  <input class="form-control me-sm-2" type="text" placeholder="Buscar">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+              </li>
+            </ul>
+            <h5 id="labelNombreArtist" class="text-center align-middle mx-3"></h5>
+            <button id="btnCerrarSesion" class="btn btn-outline-dark">Salir</button>
+          </div>
+        </div>
+      </nav>               
+    </header>
+
+    <main>
+      <div class="tab-content">
+        <!-- #home -->
+        <div class="tab-pane container-fluid active  mt-2" id="home">
+            <div class="row">
+              <!-- ladoIzquierdo -->
+              <div class="col-md-6">
+                <div class="col-12">
+                  <div class="row mt-2 mb-3 contenedorPerfil">
+                    <div class="text-center">
+                      <img src="./imagenes/avatar.png" class=" mt-3 w-20" alt="Avatar">
+                      <h5 class="mb-2">nombre_usuario</h5>
+                    </div>
+                    <div class="p-0 text-end">
+                      <button class="btn btn-outline-secondary w-auto" id="btnSetting"><img id="imgSetting" src="./node_modules/bootstrap-icons/icons/nut.svg" alt="Boton configuraciones"></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div id="contenedorInputsActualizar" class="row mt-4 mb-3 contenedorHome page page.fadeOut" hidden>
+                    <div class="container">
+                      <div class="form-floating mb-2 mt-3">
+                        <input type="text" class="form-control" id="nombreUsuario" placeholder="Nombre completo">
+                        <label for="floatingInput">Nombre completo</label>
+                      </div>
+                      <div class="form-floating mb-2">
+                        <input type="email" class="form-control" id="emailUsuario" placeholder="example@mail.com">
+                        <label for="floatingPassword">Correo electrónico</label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-floating mb-2">
+                            <input type="tel" class="form-control" id="telefonoUsuario" placeholder="telefono" maxlength="10">
+                            <label for="floatingInput">Teléfono</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating mb-2">
+                            <select class="form-select" id="selectPais" aria-label="SeleccionePais">
+                              <option selected value="0">Seleccione</option>
+                              <option value="1">Argentina</option>
+                              <option value="2">Brasíl</option>
+                              <option value="3">Chile</option>
+                              <option value="4">Colombia</option>
+                              <option value="5">Ecuador</option>
+                              <option value="6">Venezuela</option>
+                            </select>
+                            <label for="floatingSelect">Selecione País</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-floating mb-2">
+                            <input type="text" class="form-control" id="departamentoUsuario" placeholder="Departamento">
+                            <label for="floatingInput">Departamento</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating mb-2">
+                            <input type="text" class="form-control" id="ciudadUsuario" placeholder="Ciudad">
+                            <label for="floatingInput">Ciudad</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating mb-2">
+                          <input type="text" class="form-control" id="direccionUsuario" placeholder="Direccion">
+                          <label for="floatingInput">Dirección</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-floating mb-2">
+                            <input type="number" class="form-control" id="codigoPostalUsuario" placeholder="codigoPostal">
+                            <label for="floatingInput">Código postal</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating mb-2">
+                            <input type="number" class="form-control" id="documentoUsuario" placeholder="documento">
+                            <label for="floatingInput">Número de documento</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col text-center mb-3 mt-2">
+                        <button id="actualizarDatosUsuario" class=" w-auto btn btn-dark">Actualizar datos</button>
+                        <button id="cancelarDatosUsuario" class=" w-auto btn btn-danger">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- #ladoDerecho -->
+              <div class="col-md-6">
+                <div class="col-12">
+                  <div class="row mt-2 mb-3 contenedorHome">
+                    <h5 class="position-relative tituloVentana mt-1">Obras recientes</h5>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                      <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                      </div>
+                      <div class="carousel-inner mb-3">
+                        <div class="carousel-item active contenedorDeRecientes">
+                          <img src="./imagenes/Pinturas/arbol.jpg" width="100" height="100" class="h-100 w-100 img-thumbnail" alt="...">
+                        </div>
+                        <div class="carousel-item contenedorDeRecientes">
+                          <img src="./imagenes/Pinturas/avignon_picasso.jpg" width="100" height="100" class="h-100 w-100 img-thumbnail" alt="...">
+                        </div>
+                        <div class="carousel-item contenedorDeRecientes">
+                          <img src="./imagenes/Pinturas/familia_botero.jpg" width="100" height="100" class="h-100 w-100 img-thumbnail" alt="...">
+                        </div>
+                        <div class="carousel-item contenedorDeRecientes">
+                          <img src="./imagenes/Pinturas/pareja_botero.jpg" width="100" height="100" class="h-100 w-100 img-thumbnail" alt="...">
+                        </div>
+                        <div class="carousel-item contenedorDeRecientes">
+                          <img src="./imagenes/Pinturas/van-gohg1.jpg" width="100" height="100" class="h-100 w-100 img-thumbnail" alt="...">
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" data-bs-toggle="tooltip" data-bs-placement="top" title="Anterior">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" data-bs-toggle="tooltip" data-bs-placement="top" title="Siguiente">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>                    
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="row mt-1 mb-3 contenedorHome">
+                    <h5 class="position-relative tituloVentana mt-1">¿Cómo vender?</h5>
+                    <img class="w-100 mb-3" src="./imagenes/video_player.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+        </div>
+        <!-- #vender -->
+        <div class="tab-pane container-fluid fade mt-0" id="menu1">
+          <div class="row">
+            <!-- ladoIzquierdo -->
+            <div class="col-md-8">
+              <div class="mt-3">
+                <ul class="mx-1 nav nav-pills nav-justified" id="v-pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-nueva" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Nueva</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-miGaleria" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Galería Personal</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-galeria" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Galería</button>
+                  </li>
+                </ul>
+                  <div class="tab-content" id="v-pills-tabContent">
+                  <!-- Nueva -->
+                  <div class="tab-pane fade show active" id="v-pills-nueva" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div>
+                      <div class="contenedorHome mt-1 pb-2">
+                        <!-- titulo -->
+                        <div class="text-center">
+                          <img class="mt-1 w-20" src="./imagenes/WebGalleryFull.png" alt="logoWebGallery">
+                        </div>
+                        <!-- formulario -->
+                        <div>
+                          <!-- input titulo -->
+                          <div class="my-2 mx-5">
+                            <div class="form-floating">
+                              <input type="text" class="form-control" id="titulo_obraInput" placeholder="Título de la obra">
+                              <label for="floatingInput">Título de la obra</label>
+                            </div>
+                          </div>
+                          <!-- imagen -->
+                          <div class="my-1">
+                            <img src="./imagenes/video_player.png" class="rounded mx-auto d-block img-thumbnail w-50" alt="Vista previa">
+                          </div>
+                          <!-- btn input file -->
+                          <div class="mb-2 mb-sm-2 mx-4">
+                            <div class="m-sm-5 my-sm-0">
+                              <label for="formFile" class="form-label">Seleccione archivo</label>
+                              <input class="form-control" type="file" id="formFile">
+                            </div>
+                          </div>
+                          <!-- | precio | descripcion | estilo | pre-publicar | cancelar | -->
+                          <div class="row mx-3">
+                            <div class="col-md-5">
+                              <!-- precio -->
+                              <div class="mx-auto m-sm-1">
+                                <div class="form-floating mb-2">
+                                  <input type="number" class="form-control" id="precio_obraInput" placeholder="Precio">
+                                  <label for="floatingInput">Precio</label>
+                                </div>
+                              </div>
+                              <!-- select -->
+                              <div class="mx-auto mb-2">  
+                                <div class="form-floating">
+                                  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                  </select>
+                                  <label for="floatingSelect">Works with selects</label>
+                                </div>
+                              </div>
+                              <!-- btns -->
+                              <div class="row mx-0 text-center">
+                                <div class="col-7">
+                                  <a href="#" class="btn w-100 btn-success">Pre-publicar</a>
+                                </div>
+                                <div class="col-5">
+                                  <a href="#" class="btn w-100 btn-danger">Cancelar</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-7">
+                              <div class="form-floating mt-1 mx-auto">
+                                <textarea class="form-control" placeholder="Descripción" id="descripcion_obraInput"></textarea>
+                                <label for="floatingTextarea2">Descripción</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- miGaleria -->
+                  <div class="tab-pane fade" id="v-pills-miGaleria" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="col-12">
+                      <div class="scroll">
+                        <h4 class="tituloVentana text-center contenedorHome">Mis Obras</h4>
+                        <div class="row mt-0 contenedorHome justify-content-center" id="scrollMostrarObras">
+                          <div class="row justify-content-center mb-3">
+                              <!-- #filaObras 1 -->
+                              <div class="row">
+      
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg1" class="img-thumbnail vistaPreviaMisImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_1</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg2" class="img-thumbnail vistaPreviaMisImg" width="330" src="./imagenes/Pinturas/arbol.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_2</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+      
+                              </div>
+                              <!-- #filaObras 2 -->
+                              <div class="row">
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg3" class="img-thumbnail vistaPreviaMisImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_3</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+        
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg4" class="img-thumbnail vistaPreviaMisImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_4</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- #filaObras 3 -->
+                              <div class="row">
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg5" class="img-thumbnail vistaPreviaMisImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_5</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+        
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg6" class="img-thumbnail vistaPreviaMisImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_6</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Galeria -->
+                  <div class="tab-pane fade" id="v-pills-galeria" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="col-12">
+                      <div class="scroll">
+                        <h4 class="tituloVentana text-center contenedorHome mt-1">Disponibles</h4>
+                        <div class="row mt-0 contenedorHome justify-content-center" id="scrollMostrarObras">
+                          <div class="row justify-content-center mb-3">
+                              <!-- #filaObras 1 -->
+                              <div class="row">
+      
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg1" class="img-thumbnail vistaPreviaImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_1</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg2" class="img-thumbnail vistaPreviaImg" width="330" src="./imagenes/Pinturas/arbol.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_2</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+      
+                              </div>
+                              <!-- #filaObras 2 -->
+                              <div class="row">
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg3" class="img-thumbnail vistaPreviaImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_3</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+        
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg4" class="img-thumbnail vistaPreviaImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_4</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- #filaObras 3 -->
+                              <div class="row">
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg5" class="img-thumbnail vistaPreviaImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_5</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+        
+                                <div class="pt-3 col-md contenedorObras m-1 mt-3">
+                                  <div class="row">
+                                    <a href="#"><img id="vistaPreviaImg6" class="img-thumbnail vistaPreviaImg" width="330" src="./imagenes/Pinturas/preview.jpg" alt="vistaPrevia"></a>
+                                  </div>
+                                  <h6 class="tituloVentana mt-1">nombre_obra_6</h6>
+                                  <div class="row me-auto">
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">nombre_artista</h6>
+                                    </div>
+                                    <div class="col-md">
+                                      <h6 class="tituloVentana">$ precio</h6>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- #ladoDerecho -->
+            <div class="col-md-4">
+
+              <div class="col-12">
+                <div class="row mt-3 mb-4 contenedorHome">
+                  <h5 class="position-relative tituloVentana mt-1">Obras mejor valoradas</h5>
+                  <div id="carouselExampleIndicators3" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
+                    <div class="carousel-inner mb-3">
+                      <div class="carousel-item active">
+                        <img src="./imagenes/Pinturas/arbol.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/avignon_picasso.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/familia_botero.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/pareja_botero.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/van-gohg1.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>                    
+                </div>
+
+                <div class="row mt-3 mb-4 contenedorHome">
+                  <h5 class="position-relative tituloVentana mt-1">Obras recientes</h5>
+                  <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
+                    <div class="carousel-inner mb-3">
+                      <div class="carousel-item active">
+                        <img src="./imagenes/Pinturas/arbol.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/avignon_picasso.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/familia_botero.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/pareja_botero.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/van-gohg1.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>                    
+                </div>
+                
+                <div class="row mt-3 mb-4 contenedorHome">
+                  <h5 class=" text-center mt-1 tituloVentana">Compartir</h5>
+                  <div class="btn-group mb-3" role="group" aria-label="Basic example">
+                    <a href="#" type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir en Whatsapp"><img src="./node_modules/bootstrap-icons/icons/whatsapp.svg" alt="Compartir en Whatsapp"></a>
+                    <a href="#" type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir en Facebook"><img src="./node_modules/bootstrap-icons/icons/facebook.svg" alt="Compartir en Facebook"></a>
+                    <a href="#" type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir en Twitter"><img src="./node_modules/bootstrap-icons/icons/twitter.svg" alt="Compartir en Twitter"></a>
+                    <a href="#" type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir en Telegram"><img src="./node_modules/bootstrap-icons/icons/telegram.svg" alt="Compartir en Telegram"></a>
+                    <a href="#" type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir Vínculo"><img src="./node_modules/bootstrap-icons/icons/link-45deg.svg" alt="Compartir Vínculo"></a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- #misVentas -->
+        <div class="tab-pane container-fluid fade mt-0" id="menu2">
+          <div class="row">
+            <!-- ladoIzquierdo -->
+            <div class="col-md-8">
+              <div class="contenedorHome text-center mt-3">
+                <img class="mt-5 w-30" src="./imagenes/WebGalleryFull.png" alt="logoWebGallery">
+                <h1 class="tituloVentana" >Mis ventas</h1>
+                <div class="m-3 mt-0 mb-0 row">
+                  <table class="table table-bordered border-secondary">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre obra</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Nombre comprador</th>
+                        <th scope="col">Fecha compra</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>pintura</td>
+                        <td>$00.000.000</td>
+                        <td>nombre artista</td>
+                        <td>00/00/0000</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>pintura</td>
+                        <td>$00.000.000</td>
+                        <td>nombre artista</td>
+                        <td>00/00/0000</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>pintura</td>
+                        <td>$00.000.000</td>
+                        <td>nombre artista</td>
+                        <td>00/00/0000</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>pintura</td>
+                        <td>$00.000.000</td>
+                        <td>nombre artista</td>
+                        <td>00/00/0000</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>pintura</td>
+                        <td>$00.000.000</td>
+                        <td>nombre artista</td>
+                        <td>00/00/0000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- #ladoDerecho -->
+            <div class="col-md-4">
+
+              <div class="col-12">
+                <div class="row mt-3 mb-4 contenedorHome">
+                  <h5 class="position-relative tituloVentana mt-1">Obras mejor valoradas</h5>
+                  <div id="carouselExampleIndicators5" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
+                    <div class="carousel-inner mb-3">
+                      <div class="carousel-item active">
+                        <img src="./imagenes/Pinturas/arbol.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/avignon_picasso.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/familia_botero.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/pareja_botero.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/van-gohg1.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>                    
+                </div>
+
+                <div class="row mt-3 mb-4 contenedorHome">
+                  <h5 class="position-relative tituloVentana mt-1">Obras recientes</h5>
+                  <div id="carouselExampleIndicators4" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
+                    <div class="carousel-inner mb-3">
+                      <div class="carousel-item active">
+                        <img src="./imagenes/Pinturas/arbol.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/avignon_picasso.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/familia_botero.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/pareja_botero.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./imagenes/Pinturas/van-gohg1.jpg" class="d-block w-100 contenedorDeMejores" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>                    
+                </div>
+                
+                <div class="row mt-3 mb-4 contenedorHome">
+                  <h5 class=" text-center mt-1 tituloVentana">Compartir</h5>
+                  <div class="btn-group mb-3" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir en Whatsapp"><img src="./node_modules/bootstrap-icons/icons/whatsapp.svg" alt="Compartir en Whatsapp"></button>
+                    <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir en Facebook"><img src="./node_modules/bootstrap-icons/icons/facebook.svg" alt="Compartir en Facebook"></button>
+                    <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir en Twitter"><img src="./node_modules/bootstrap-icons/icons/twitter.svg" alt="Compartir en Twitter"></button>
+                    <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir en Telegram"><img src="./node_modules/bootstrap-icons/icons/telegram.svg" alt="Compartir en Telegram"></button>
+                    <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Compartir Vínculo"><img src="./node_modules/bootstrap-icons/icons/link-45deg.svg" alt="Compartir Vínculo"></button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- #contacto -->
+        <div class="tab-pane container-fluid fade mt-2 pt-2 p-5" id="menu3">
+          <h1 class="tituloVentana text-center">Contacto</h1>
+          <div class="contenedorHome p-5">
+            <fieldset class="row">
+              <legend class="col-form-label col-sm-1 pt-0">Motivo</legend>
+              <div class="col-sm-11">
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                  <label class="form-check-label" for="gridRadios1">
+                    Cancelar venta
+                  </label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                  <label class="form-check-label" for="gridRadios1">
+                    Modificar venta
+                  </label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                  <label class="form-check-label" for="gridRadios1">
+                    Cambiar dirección de recolección
+                  </label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                  <label class="form-check-label" for="gridRadios2">
+                    PQRS
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                  <label class="form-check-label" for="gridRadios2">
+                    Otra:<input type="text" class="form-control">
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+            <div class="row mb-3">
+              <label for="Descripcion" class="col-sm-1 col-form-label">Descripción</label>
+              <div class="col-md-11">
+                <input type="textarea" class="form-control" id="areaDescripcion" rows="10" cols="30">
+              </div>
+            </div>
+            <div class="row mb-3">  
+            </div>
+          <div class="col text-center">
+            <button class="btn btn-secondary btn-outline-dark w-auto">Enviar</button>
+          </div>
+          </div>
+
+        </div>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+  </div> 
+
+    <script type="module" src="./js/functionsVendedor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
